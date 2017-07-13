@@ -1,2 +1,12 @@
-# i3wm_e200ha
-My config files for i3wm on the asus e200ha
+# i3wm config files for the asus e200ha laptop
+
+###Needed dependencies :
+rofi
+
+font-awesome
+
+lm_sensors
+
+python3
+
+
