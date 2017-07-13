@@ -1,0 +1,335 @@
+#############################################################
+#			DESACTIVE
+#############################################################
+#exec "udiskie -t &"
+#exec --no-startup-id nm-applet 
+#exec --no-startup-id volumeicon
+#exec_always compton -b
+#exec_always --no-startup-id gnome-keyring 
+#exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-autehtification-agent-1
+
+#############################################################
+#			STARTUP
+#############################################################
+exec --no-startup-id nitrogen --restore
+exec --no-startup-id setxkbmap -layout fr,us,ru -option 'grp:alt_shift_toggle' 
+exec ~/Documents/Scripts/touchpad_click.sh
+#############################################################
+#			GAPS
+#############################################################
+
+#smart_gaps on
+#gaps inner 15
+#gaps outer 0
+
+#############################################################
+#			MODS
+#############################################################
+set $mod Mod4
+set $alt Mod1
+
+#############################################################
+#			WORKSPACES
+#############################################################
+set $workspace1 	1  
+set $workspace2 	2  
+set $workspace3 	3  
+set $workspace4 	4  
+set $workspace5 	5  
+set $workspace6 	6  
+set $workspace7 	7  
+set $workspace8 	8  
+set $workspace9 	9  
+set $workspace10 	10  
+
+##############################################################
+#			FONTS
+##############################################################
+#font pango:Montserrat Light 8.50 
+#font pango:Meslo LG S DZ 9
+
+font pango:Hermit bold 7.5
+
+
+##############################################################
+#			FLOATING
+##############################################################
+floating_modifier $mod
+
+#floating size
+floating_minimum_size	600 x 300
+floating_maximum_size	1000 x 700
+
+#fenêtres flotantes
+for_window [class="(?i)lxappearance"] floating enable border none
+for_window [class="(?i)nitrogen"] floating enable border none
+for_window [class="(?i)feh"] floating enable
+for_window [class="(?i)sxiv"] floating enable border none
+for_window [class="(?i)gparted"] floating enable
+for_window [class="(?i)mpv"] floating enable border none
+for_window [class="(?i)elinks"] floating enable border none
+for_window [class="(?i)transmission"] floating enable border none
+
+#sans bordures
+	#for_window [class="(?i)spotify"] border none
+	#for_window [class="(?i)subl"] border none
+for_window [class="(?i)"] border none
+
+################################################################
+
+# start a terminal
+bindsym $mod+Return exec termite
+
+# kill focused window
+bindsym $mod+q kill
+
+# start dmenu (a program launcher) | ### => dmenu-run <= ###
+bindsym $mod+d exec j4-dmenu-desktop
+
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+m focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+m move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+z layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# switch to workspace
+bindsym $mod+ampersand workspace $workspace1
+bindsym $mod+eacute workspace $workspace2
+bindsym $mod+quotedbl workspace $workspace3
+bindsym $mod+apostrophe workspace $workspace4
+bindsym $mod+parenleft workspace $workspace5
+bindsym $mod+minus workspace $workspace6
+bindsym $mod+egrave workspace $workspace7
+bindsym $mod+underscore workspace $workspace8
+bindsym $mod+ccedilla workspace $workspace9
+bindsym $mod+agrave workspace $workspace10
+
+# move focused container to workspace
+bindsym $mod+Shift+ampersand move container to workspace $workspace1
+bindsym $mod+Shift+eacute move container to workspace $workspace2
+bindsym $mod+Shift+quotedbl move container to workspace $workspace3
+bindsym $mod+Shift+apostrophe move container to workspace $workspace4
+bindsym $mod+Shift+parenleft move container to workspace $workspace5
+bindsym $mod+Shift+minus move container to workspace $workspace6
+bindsym $mod+Shift+egrave move container to workspace $workspace7
+bindsym $mod+Shift+underscore move container to workspace $workspace8
+bindsym $mod+Shift+ccedilla move container to workspace $workspace9
+bindsym $mod+Shift+agrave move container to workspace $workspace10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+#bindsym $mod+Pause exec "i3-nagbar -t warning -m '' -b 'Suspend' 'i3lock && systemctl suspend' -b 'Poweroff' 'systemctl poweroff' -b 'Reboot' 'systemctl reboot' -b 'Log out' 'i3-msg exit'"
+
+bindsym XF86Sleep exec "~/.config/i3/i3blocks/shutdown_menu -c"
+
+#bindsym $mod+Pause exec "oblogout"
+
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym m resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+
+bar {
+
+#    	status_command i3status  -c ~/.config/i3/i3status.conf
+#	status_command conky -c ~/config/i3/conky/conkyrc
+
+	status_command i3blocks -c ~/.config/i3/i3blocks.conf
+#	tray_output eDP1
+	mode dock
+	strip_workspace_numbers yes
+	colors {
+		background #1a1e24
+#		separator #A35C7C
+		separator #1a1e24
+
+		#statusline #5c91a3		## 		BLUE
+		statusline #487C7F 		##	BLUE 2
+		#statusline #576970		##	 	GREY
+		#statusline #7E849B		## 		LIGHTGREY
+		#statusline #bbbbbb		## 		brownie
+		#statusline #8D586A		## 		RED
+		#statusline #88313D		## 	RED_2
+		#statusline #6A8D58		## 		GREEN
+		#statusline	#5CA383		##	GREEN_2
+		#statusline	#8D7E58		## 		ORANGE
+		#statusline	#8F8B56		## 		YELLOW
+
+		
+##					contour	 plein	 texte
+		focused_workspace	#1a1e24	#1a1e24	#A35C7C
+		active_workspace 	#1a1e24	#1a1e24	#F79056
+		inactive_workspace 	#1a1e24	#1a1e24	#487C7F
+		urgent_workspace	#1a1e24	#1a1e24	#A35C7C
+	}
+	position top
+}
+
+#################################################################################
+
+#Headphones(DAC2) + Speaker(DAC1) : VOLUME+-
+	bindsym XF86AudioRaiseVolume exec "amixer -q set DAC1 1db+ && amixer -q set DAC2 1db+"
+	bindsym XF86AudioLowerVolume exec "amixer -q set DAC1 1db- && amixer -q set DAC2 1db-"
+
+#Headphones(DAC2) + Speaker(DAC1) : MUTE
+	bindsym XF86AudioMute exec "amixer -q set 'DAC1 Mute' toggle && amixer -q set 'I2S DAC2L' toggle && amixer -q set 'I2S DAC2R' toggle "
+
+#Switch Headphones / Speaker
+	bindsym $mod+XF86AudioMute exec "amixer -q set 'Ext Spk' toggle && amixer -q set 'Headphone' toggle
+
+#Touchpad toggle
+	bindsym XF86TouchpadToggle exec ~/Documents/Scripts/touchpad_toogle.sh
+
+#Backlight
+	bindsym XF86MonBrightnessUp exec xbacklight -inc 1
+	bindsym XF86MonBrightnessDown exec xbacklight -dec 1
+
+#switch workspace
+bindsym $mod+Tab workspace prev_on_output
+
+bindsym $alt+twosuperior exec "focuswriter"
+bindsym $alt+1 exec "chromium"
+bindsym $alt+2 exec "pcmanfm"
+bindsym $alt+3 exec "lollypop"
+bindsym $mod+twosuperior exec "lxappearance"
+
+
+
+### Assign ###
+#oblogout
+
+#chrome
+	assign [class="(?i)chromium"] $workspace1
+		for_window [class="(?i)chromium"] move to workspace $workspace1
+		for_window [class="(?i)chromium"] focus 
+
+#leafpad
+	assign [class="(?i)leafpad"] $workspace2
+	for_window [class="(?i)leafpad"] move to workspace $workspace2
+
+#termite
+#	assign [class="(?i)termite"] $workspace5
+#	for_window [class="(?i)termite"] move to workspace $workspace5
+#
+#	assign [class="(?i)mpv"] $workspace5
+#	for_window [class="(?i)mpv"] move to workspace $workspace5
+
+#sublime-text
+	assign [class="(?i)subl"] $workspace2
+	for_window [class="(?i)subl"] move to workspace $workspace2
+
+#lollypop
+	assign [class="(?i)Lollypop"] $workspace3
+		for_window [class="(?i)Lollypop"] move to workspace $workspace3
+		for_window [class="(?i)Lollypop"] focus
+
+#spotify
+	assign [class="(?i)spotify"] $workspace3
+		for_window [class="(?i)spotify"] move to workspace $workspace3
+		for_window [class="(?i)spotify"] focus
+
+	assign [class="(?i)easytag"] $workspace6
+		for_window [class="(?i)easytag"]] move to workspace $workspace6
+		for_window [class="(?i)easytag"]] focus
+#pcmanfm
+	assign [class="(?i)pcmanfm"] $workspace2
+		for_window [class="(?i)pcmanfm"] move to workspace $workspace2
+		for_window [class="(?i)pcmanfm"] focus
+
+#transmission
+	assign [class="(?i)transmission"] $workspace5
+		for_window [class="(?i)transmission"]] move to workspace $workspace5
+		for_window [class="(?i)ransmission"] focus
+
+# # elinks
+# 	assign [class="(?i)elinks"] $workspace6
+# 		for_window [class="(?i)elinks"]] move to workspace $workspace6
+# 		for_window [class="(?i)elinks"] focus
+
+#mail
+	assign [class="(?i)sylpheed"] $workspace5
+		for_window [class="(?i)sylpheed"]] move to workspace $workspace5
+		for_window [class="(?i)sylpheed"] focus
+
+
+#sticky enable
