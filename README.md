@@ -1,6 +1,6 @@
 # i3wm config files for the asus e200ha laptop
 
-###Needed dependencies :
+### Needed dependencies :
 rofi
 
 font-awesome
