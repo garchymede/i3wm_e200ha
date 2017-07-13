@@ -9,4 +9,6 @@ lm_sensors
 
 python3
 
+ttf-hermit
+
 
