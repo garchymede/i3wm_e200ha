@@ -1,14 +1,4 @@
 #############################################################
-#			DESACTIVE
-#############################################################
-#exec "udiskie -t &"
-#exec --no-startup-id nm-applet 
-#exec --no-startup-id volumeicon
-#exec_always compton -b
-#exec_always --no-startup-id gnome-keyring 
-#exec --no-startup-id /usr/lib/mate-polkit/polkit-mate-autehtification-agent-1
-
-#############################################################
 #			STARTUP
 #############################################################
 exec --no-startup-id nitrogen --restore
@@ -60,7 +50,7 @@ floating_modifier $mod
 floating_minimum_size	600 x 300
 floating_maximum_size	1000 x 700
 
-#fenêtres flotantes
+#floating apps
 for_window [class="(?i)lxappearance"] floating enable border none
 for_window [class="(?i)nitrogen"] floating enable border none
 for_window [class="(?i)feh"] floating enable
@@ -70,7 +60,7 @@ for_window [class="(?i)mpv"] floating enable border none
 for_window [class="(?i)elinks"] floating enable border none
 for_window [class="(?i)transmission"] floating enable border none
 
-#sans bordures
+#no borders
 	#for_window [class="(?i)spotify"] border none
 	#for_window [class="(?i)subl"] border none
 for_window [class="(?i)"] border none
